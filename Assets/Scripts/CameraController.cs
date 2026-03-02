@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Pointer.current.press.wasPressedThisFrame)
         {
             if (!_bgmAS.enabled)
             {
@@ -20,18 +20,18 @@ public class CameraController : MonoBehaviour
 
             _leftButtonPressed = true;
         }
-        else if (Mouse.current.leftButton.wasReleasedThisFrame)
+        else if (Pointer.current.press.wasReleasedThisFrame)
         {
             _leftButtonPressed = false;
         }
 
         if (_leftButtonPressed)
         {
-            Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+            Vector2 delta = Pointer.current.delta.ReadValue();
 
-            if (Mathf.Abs(mouseDelta.x) > 0)
+            if (Mathf.Abs(delta.x) > 0)
             {
-                transform.Rotate(0, RotationSpeed * mouseDelta.x, 0);
+                transform.Rotate(0, RotationSpeed * delta.x, 0);
             }
         }
     }
