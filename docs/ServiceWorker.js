@@ -1,9 +1,9 @@
 const cacheName = "JuiceBox-julshii3d-0.1.0";
 const contentToCache = [
-    "Build/3_1_2026_2.loader.js",
-    "Build/3_1_2026_2.framework.js.unityweb",
-    "Build/3_1_2026_2.data.unityweb",
-    "Build/3_1_2026_2.wasm.unityweb",
+    "Build/3_1_2026_3.loader.js",
+    "Build/3_1_2026_3.framework.js.unityweb",
+    "Build/3_1_2026_3.data.unityweb",
+    "Build/3_1_2026_3.wasm.unityweb",
     "TemplateData/style.css"
 
 ];

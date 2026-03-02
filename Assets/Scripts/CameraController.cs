@@ -13,9 +13,9 @@ public class CameraController : MonoBehaviour
     {
         if (Pointer.current.press.wasPressedThisFrame)
         {
-            if (!_bgmAS.enabled)
+            if (!_bgmAS.isPlaying)
             {
-                _bgmAS.enabled = true;
+                _bgmAS.Play();
             }
 
             _leftButtonPressed = true;
