@@ -1,13 +1,51 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshCollider))]
+[RequireComponent(typeof(AudioSource))]
 public class Julshii3D : MonoBehaviour
 {
     private const float RotationSpeed = 60;
+    private const float EggLinearVelocityScale = 3;
+    private const float EggAngularVelocityComponentLimit = 2 * Mathf.PI / 2;
+
+    [SerializeField] private GameObject _eggPrefab;
+    [SerializeField] private AudioClip _eggSFX;
+
+    private AudioSource _audioSrc;
+
+    public void SpawnEgg()
+    {
+        GameObject egg = Instantiate(_eggPrefab);
+        Rigidbody eggRB = egg.GetComponent<Rigidbody>();
+
+        Vector3 eggLV = Vector3.ProjectOnPlane(Camera.main.transform.position - transform.position, Vector3.up);
+        eggLV.Normalize();
+        eggLV += Random.Range(-1f, 1f) * Camera.main.transform.right;
+        eggLV += Random.Range(0f, 1f) * Vector3.up;
+        eggLV.Normalize();
+        eggLV *= EggLinearVelocityScale;
+
+        Vector3 eggAV = new Vector3(
+            Random.Range(-EggAngularVelocityComponentLimit, EggAngularVelocityComponentLimit),
+            Random.Range(-EggAngularVelocityComponentLimit, EggAngularVelocityComponentLimit),
+            Random.Range(-EggAngularVelocityComponentLimit, EggAngularVelocityComponentLimit)
+        );
+
+        eggRB.position = transform.position;
+        eggRB.linearVelocity = eggLV;
+        eggRB.angularVelocity = eggAV;
+
+        _audioSrc.PlayOneShot(_eggSFX);
+    }
 
     private void Awake()
     {
-        GetComponent<MeshFilter>().sharedMesh = CreateMesh();
+        _audioSrc = GetComponent<AudioSource>();
+
+        Mesh mesh = CreateMesh();
+        GetComponent<MeshFilter>().sharedMesh = mesh;
+        GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
     private void Update()

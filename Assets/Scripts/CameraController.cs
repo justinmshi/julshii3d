@@ -19,6 +19,16 @@ public class CameraController : MonoBehaviour
             }
 
             _leftButtonPressed = true;
+
+            if (
+                Physics.Raycast(
+                    Camera.main.ScreenPointToRay(Pointer.current.position.ReadValue()),
+                    out RaycastHit hitInfo
+                )
+            )
+            {
+                hitInfo.collider.GetComponent<Julshii3D>().SpawnEgg();
+            }
         }
         else if (Pointer.current.press.wasReleasedThisFrame)
         {
