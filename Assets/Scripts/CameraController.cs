@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     private const float RotationSpeed = 0.1f;
-    private const float ZoomSpeed = 0.05f;
+    private const float ZoomSpeed = 0.0025f;
 
     [SerializeField] private AudioSource _bgmAS;
     [SerializeField] private Transform _camTransform;
@@ -48,16 +48,15 @@ public class CameraController : MonoBehaviour
             {
                 transform.Rotate(0, RotationSpeed * delta.x, 0);
             }
-        }
 
-        float scrollDelta = Mouse.current.scroll.y.ReadValue();
-        if (Mathf.Abs(scrollDelta) > 0)
-        {
-            _zoom = Mathf.Clamp(_zoom - ZoomSpeed * scrollDelta, 0, 1);
-            _camTransform.SetLocalPositionAndRotation(
-                Vector3.Lerp(_nearTransform.localPosition, _farTransform.localPosition, _zoom),
-                Quaternion.Slerp(_nearTransform.localRotation, _farTransform.localRotation, _zoom)
-            );
+            if (Mathf.Abs(delta.y) > 0)
+            {
+                _zoom = Mathf.Clamp(_zoom + ZoomSpeed * delta.y, 0, 1);
+                _camTransform.SetLocalPositionAndRotation(
+                    Vector3.Lerp(_nearTransform.localPosition, _farTransform.localPosition, _zoom),
+                    Quaternion.Slerp(_nearTransform.localRotation, _farTransform.localRotation, _zoom)
+                );
+            }
         }
     }
 }
