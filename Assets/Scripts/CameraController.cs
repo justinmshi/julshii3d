@@ -5,6 +5,7 @@ public class CameraController : MonoBehaviour
 {
     private const float RotationSpeed = 0.1f;
     private const float ZoomSpeed = 0.0025f;
+    private const int ClickableLayerMask = 1 << 3;
 
     [SerializeField] private AudioSource _bgmAS;
     [SerializeField] private Transform _camTransform;
@@ -28,11 +29,17 @@ public class CameraController : MonoBehaviour
             if (
                 Physics.Raycast(
                     Camera.main.ScreenPointToRay(Pointer.current.position.ReadValue()),
-                    out RaycastHit hitInfo
+                    out RaycastHit hitInfo,
+                    Mathf.Infinity,
+                    ClickableLayerMask
                 )
             )
             {
-                hitInfo.collider.GetComponent<Julshii3D>().SpawnEgg();
+                Julshii3D julshii3D = hitInfo.collider.GetComponent<Julshii3D>();
+                if (julshii3D != null)
+                {
+                    julshii3D.SpawnEgg();
+                }
             }
         }
         else if (Pointer.current.press.wasReleasedThisFrame)

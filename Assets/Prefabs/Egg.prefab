@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2059560937563731243}
   - component: {fileID: 9095010208721287756}
   - component: {fileID: 2492606246607773710}
+  - component: {fileID: 6418986940277114661}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Untagged
@@ -42,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387284138801656949}
-  m_Mesh: {fileID: 973877516759717424, guid: 777751b65bf8f524996096032c9ae7e1, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 4cc7a20465ab71446875777a800997c2, type: 2}
 --- !u!23 &2059560937563731243
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -109,6 +110,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 094d97c5121bc8d48a6934688a10e2db, type: 3}
   - {fileID: 2800000, guid: 15823d568b6d9f9468f6c738e7a7d256, type: 3}
   - {fileID: 2800000, guid: 118b0e54f69dedb47bc9a7f5fa5b60d5, type: 3}
+  _catchSFX: {fileID: 8300000, guid: 9973b18b1d250d44186071cb6a7c7101, type: 3}
 --- !u!54 &2492606246607773710
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,4 +137,25 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!135 &6418986940277114661
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387284138801656949}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.5478604
+  m_Center: {x: 0.00000023841858, y: 0, z: 0.41469154}
