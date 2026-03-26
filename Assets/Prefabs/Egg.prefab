@@ -111,6 +111,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 15823d568b6d9f9468f6c738e7a7d256, type: 3}
   - {fileID: 2800000, guid: 118b0e54f69dedb47bc9a7f5fa5b60d5, type: 3}
   _catchSFX: {fileID: 8300000, guid: 9973b18b1d250d44186071cb6a7c7101, type: 3}
+  _faceTexs:
+  - {fileID: 2800000, guid: 76809e6dd50248a4db6af4fd69f63e45, type: 3}
+  - {fileID: 2800000, guid: 036bba4f5acbcd04196e49b4ac838c70, type: 3}
 --- !u!54 &2492606246607773710
 Rigidbody:
   m_ObjectHideFlags: 0
